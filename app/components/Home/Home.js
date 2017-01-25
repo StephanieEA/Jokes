@@ -38,7 +38,7 @@ export default class Home extends Component {
 
 
   handleNumber (e) {
-    this.setState({number: e.target.value})
+    this.setState({number: 1 + parseInt(e.target.value)})
   }
 
   render () {
@@ -48,7 +48,7 @@ export default class Home extends Component {
         <RandomJoke text={this.state.joke}/>
         <Button className='new-jokes'
               text={<Link to='/jokes'>new jokes</Link>}
-              onClick={()=> console.log(this.props)}/>
+              onClick={this.getRandom.bind(this)}/>
         <JokeNumber
           onChange={this.handleNumber.bind(this)}
           value={this.state.number}/>
