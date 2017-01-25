@@ -11,6 +11,7 @@ const apiRequest = () => {
     const joke = jsoned.value.joke;
     console.log(joke)
     return joke
+    this.setState({random: joke})
   })
 }
 

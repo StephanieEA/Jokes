@@ -14,38 +14,46 @@ export default class Home extends Component {
   constructor() {
     super()
     this.state = {
-      yuck: 'b',
-      random: ''
+      url: 'https://api.icndb.com/jokes/random/?escape=javascript',
+      number: 1,
+      joke: '',
+      jokes: ['a', {}],
     }
   }
 
   componentDidMount() {
-    this.apiRequest()
+    this.getRandom()
   }
 
-  apiRequest () {
-    fetch('https://api.icndb.com/jokes/random', {method: 'GET'},)
-      .then(response => response.json())
-      .then(jsoned => {
-      const joke = jsoned.value.joke
-      this.setState({random: joke})
-    })
+  getRandom () {
+      fetch('https://api.icndb.com/jokes/random/' + this.state.number + '/?escape=javascript', {method: 'GET'},)
+        .then(response => response.json())
+        .then(jsoned => {
+          const values = Array.from(jsoned.value)
+          console.log(values)
+          this.setState({joke: values[0].joke})
+          this.setState({jokes: values})
+        })
+  }
+
+  handleNumber (e) {
+    this.setState({number: e.target.value})
   }
 
   render () {
   return (
       <section>
         <Header/>
-        <RandomJoke text={this.state.random}/>
+        <RandomJoke text={this.state.joke}/>
         <Button className='new-jokes'
               text={<Link to='/jokes'>new jokes</Link>}
-              onClick={()=> console.log(this.props)}/>
-        <JokeNumber number = '3'
-                  onChange={() => console.log('type number')}/>
+            //  onClick={() => this.renderNewJokes(this.state.jokes)}
+            />
+        <JokeNumber onChange={this.handleNumber.bind(this)}/>
         <Button className='favorites'
               text='favorites'
-              onClick={()=> console.log('click favorites')}/>
-        {this.props.children}
+              onClick={()=> this.getRandom(this.state.url)}/>
+            {React.cloneElement(this.props.children, {jokes: this.state.jokes})}
       </section>
     );
   }

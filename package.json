@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha -w --compilers js:babel-core/register --require helpers/test-setup.js app/**/*.spec.js",
-    "start": "webpack-dev-server -d --watch"
+    "start": "webpack-dev-server -d --watch --inline --content-base . --history-api-fallback"
   },
   "author": "Stephanie Andrews",
   "license": "MIT",
