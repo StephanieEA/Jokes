@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { Link } from 'react-router'
 import '../../styles';
@@ -10,23 +10,31 @@ import JokeNumber from '../../components/Input/JokeNumber';
 import JokeGrid from '../../components/JokeGrid/JokeGrid';
 import apiRequest from '../../components/Helpers/apiRequest';
 
-const Home = () => {
+export default class Home extends Component {
+  constructor() {
+    super()
+    this.state = {
+      jokes: [],
+      randomJoke: ''
+    }
+  }
+
+  render () {
   apiRequest()
   return (
-    <section>
-      <Header/>
-      <RandomJoke random='bad joke'/>
-      <Button className='new-jokes'
+      <section>
+        <Header/>
+        <RandomJoke random='bad joke'/>
+        <Button className='new-jokes'
               text={<Link to='/jokes'>new jokes</Link>}
-              onClick={()=> console.log('click new jokes')}/>
-      <JokeNumber number = '3'
+              onClick={()=> console.log(this.props)}/>
+        <JokeNumber number = '3'
                   onChange={() => console.log('type number')}/>
-      <Button className='favorites'
+        <Button className='favorites'
               text='favorites'
               onClick={()=> console.log('click favorites')}/>
-      <JokeGrid/>
-    </section>
-  );
+        {this.props.children}
+      </section>
+    );
+  }
 }
-
-export default Home;
