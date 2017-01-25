@@ -1,9 +1,9 @@
 import React from 'react';
 
-const JokeNumber = ({number, onChange, value}) => {
+const JokeNumber = ({onChange, value}) => {
   return (
     <input type='number'
-           placeholder={number}
+           placeholder='1'
            onChange={onChange}>
     </input>
   )

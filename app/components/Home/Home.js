@@ -32,7 +32,7 @@ export default class Home extends Component {
           const values = Array.from(jsoned.value)
           console.log(values)
           this.setState({joke: values[0].joke})
-          this.setState({jokes: values})
+          this.setState({jokes: values.slice(1)})
         })
   }
 

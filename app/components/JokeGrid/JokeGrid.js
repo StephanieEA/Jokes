@@ -12,7 +12,7 @@ export default class JokeGrid extends Component {
   }
 
   render () {
-    const jokes = this.renderNewJokes(this.props.jokes.slice(1))
+    const jokes = this.renderNewJokes(this.props.jokes)
     return (
       <section>
         {jokes}
