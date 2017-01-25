@@ -1,0 +1,11 @@
+@import '../../styles';
+
+
+.Header {
+  background: rgba(255, 255, 255, 0.3);
+  color: $text-color;
+  font-family: $header-font;
+  font-size: 25px;
+  padding: 5vh;
+  text-align: center;
+}
