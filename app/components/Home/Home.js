@@ -70,14 +70,24 @@ export default class Home extends Component {
     this.setState({parentControl: false})
   }
 
-  renderControlsCheck () {
+  renderSettings () {
     this.state.renderControls = !this.state.renderControls
   }
+
+  // assignButtonLink () {
+  //   if (renderControls) {
+  //     let textValue = <Link to='/settings'>Settings</Link>
+  //   }
+  //   if (!renderControls) {
+  //     textValue = <Link to='/jokes'>Jokes</Link>
+  //   }
+  // }
 
   render () {
   return (
       <section>
-        <Header  renderControlsCheck={this.renderControlsCheck.bind(this)}/>
+        <Header  renderSettings={this.renderSettings.bind(this)}
+                 renderControls={this.state.renderControls}/>
         <RandomJoke text={this.state.joke}/>
         {/* controls should be a component in home that's replaced by settings */}
         {this.state.renderControls ?

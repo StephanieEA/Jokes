@@ -5,12 +5,19 @@ import './header-style';
 
 import Button from '../Button/Button';
 
-const Header = ({renderControlsCheck}) => {
+const Header = ({renderSettings, renderControls}) => {
+
   return (
       <h1 className='Header'>CHUCK NORRIS JOKE MACHINE
-      <Button className='settings'
-              text={<Link to='/settings'>Settings</Link>}
-              onClick={renderControlsCheck}/>
+      {renderControls ?
+        <Button className='settings'
+                text={<Link to='/settings'>Settings</Link>}
+                onClick={renderSettings}
+        /> : <Button className='settings'
+                        text={<Link to='/jokes'>Jokes</Link>}
+                        onClick={renderSettings}
+        />
+            }
       </h1>
   );
 }
