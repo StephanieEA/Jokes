@@ -8,6 +8,7 @@ import JokeGrid from './components/JokeGrid/JokeGrid'
 render((
   <Router history={browserHistory}>
     <Route path='/' component={Home}>
+    <IndexRoute component={Home}/>
       <Route path='/jokes' component={JokeGrid} />
       <IndexRoute component={JokeGrid}/>
     </Route>
