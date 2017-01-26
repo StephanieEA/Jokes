@@ -29,7 +29,7 @@ export default class Home extends Component {
   componentDidMount() {
     this.getRandom()
   }
-
+//To do : refactor and move this out of Home
   getRandom () {
       if (!this.state.parentControl) {
         fetch(`https://api.icndb.com/jokes/random/${this.state.number}/?firstName=${this.state.firstName}&lastName=${this.state.lastName}&escape=javascript`, {method: 'GET'},)
@@ -69,7 +69,7 @@ export default class Home extends Component {
   handleOffParentControl (e) {
     this.setState({parentControl: false})
   }
-
+//  To do- refactor- probably not a necessary function
   renderSettings () {
     this.state.renderControls = !this.state.renderControls
   }

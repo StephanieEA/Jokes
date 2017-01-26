@@ -9,6 +9,7 @@ const Header = ({renderSettings, renderControls}) => {
 
   return (
       <h1 className='Header'>CHUCK NORRIS JOKE MACHINE
+        {/* Can I make the text property conditional instead of the button as a whole */}
       {renderControls ?
         <Button className='settings'
                 text={<Link to='/settings'>Settings</Link>}

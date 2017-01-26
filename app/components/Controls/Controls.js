@@ -15,9 +15,11 @@ export default class Controls extends Component {
         <JokeNumber
           onChange={this.props.handleNumber}
           value={this.props.number}/>
-        <Button className='favorites'
-              text='Favorites'
-              // onClick={this.getRandomName.bind(this)}
+        <Button
+          // will need to alter onClick trigger- right now its just duplicating joke setup
+              className='favorites'
+              text={<Link to='/favorites'>Favorites</Link>}
+              onClick={this.props.getRandom}
         />
       </div>
     )

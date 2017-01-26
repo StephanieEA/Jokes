@@ -30,13 +30,11 @@ describe('<Controls/>', () => {
     expect(wrapper.prop('to')).to.equal('/jokes')
   })
 
-  it('should use parents on change method to update value', () => {
+  it('should use parents on change method to update input', () => {
     const onChange = sinon.spy()
-    const fakeNumber = 4
     const event1 = { target: { value: '1' } };
     const event2 = { target: { value: '2' } };
-    const wrapper = mount(<Controls handleNumber={onChange}
-    number={fakeNumber}/>).find('input');
+    const wrapper = mount(<Controls handleNumber={onChange}/>).find('input');
     wrapper.simulate('change', event1)
     expect(onChange.calledOnce).to.equal(true)
     wrapper.simulate('change', event2)
