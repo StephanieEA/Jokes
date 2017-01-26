@@ -1,10 +1,13 @@
 @import '../../styles';
 
 input {
-  height: 22px;
+  border-radius: 5px;
+  border: none;
   color: darkgrey;
   font-size: 10px;
-  width: 10px;
+  height: 22px;
+  text-align: center;
+  width: 12px;
 }
 
 input[type=number]::-webkit-inner-spin-button,
