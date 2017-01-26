@@ -1,6 +1,8 @@
-//@import '../../styles';
+@import '../../styles';
 
 p {
   border: 1px dotted white;
+  font-size: $small-font;
   margin: 5px;
+  padding: 20px;
 }

@@ -47,13 +47,13 @@ export default class Home extends Component {
         <Header/>
         <RandomJoke text={this.state.joke}/>
         <Button className='new-jokes'
-              text={<Link to='/jokes'>new jokes</Link>}
+              text={<Link to='/jokes'>New Jokes</Link>}
               onClick={this.getRandom.bind(this)}/>
         <JokeNumber
           onChange={this.handleNumber.bind(this)}
           value={this.state.number}/>
         <Button className='favorites'
-              text='favorites'
+              text='Favorites'
           //    onClick={()=> console.log('click favorites')}
         />
         {React.cloneElement(this.props.children, {jokes: this.state.jokes})}

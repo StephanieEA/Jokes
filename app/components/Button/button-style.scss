@@ -6,7 +6,10 @@ button {
   }
   background: rgb(192, 192, 192);
   border: none;
+  border-radius: 5px;
+  font-size: $small-font;
   margin: 5px;
+  padding: 10px 20px;
   text-align: center;
 }
 
@@ -14,7 +17,8 @@ button {
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  font-size: 8px;
+  font-size: $small-font;
+  padding: 0;
   position: absolute;
   right: 2vw;
   top: 6vh;
@@ -23,4 +27,8 @@ button {
 .favorites {
   display: block;
   margin: auto;
+}
+
+.new-jokes {
+  width: 125px;
 }

@@ -1,9 +1,10 @@
 import React from 'react';
+import './input-style';
 
 const JokeNumber = ({onChange, value}) => {
   return (
     <input type='number'
-           placeholder='1'
+           placeholder='5'
            onChange={onChange}>
     </input>
   )

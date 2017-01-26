@@ -7,7 +7,7 @@ const Header = () => {
   return (
       <h1 className='Header'>CHUCK NORRIS JOKE MACHINE
       <Button className='settings'
-              text='settings'
+              text='Settings'
               onClick={()=> console.log('click settings')}/>
       </h1>
   );

@@ -1,6 +1,14 @@
 //@import '../../styles';
 
 .random {
+  background: rgba(0,0,0,0.2);
+  border: none;
+  color: white;
   display: inline-block;
-  border: 5px solid magenta;
+  font-size: 10px;
+  width: 30%;
+}
+
+span {
+  float: right;
 }
