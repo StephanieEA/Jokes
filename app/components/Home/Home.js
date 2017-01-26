@@ -14,7 +14,7 @@ export default class Home extends Component {
   constructor() {
     super()
     this.state = {
-      url: 'https://api.icndb.com/jokes/random/?escape=javascript',
+    //  url: 'https://api.icndb.com/jokes/random/?escape=javascript',
       number: 1,
       joke: '',
       jokes: [],
@@ -50,17 +50,6 @@ export default class Home extends Component {
       }
   }
 
-  // getRandomName () {
-  //     fetch(`https://api.icndb.com/jokes/random/${this.state.number}/?firstName=${this.state.firstName}&lastName=${this.state.lastName}&escape=javascript`, {method: 'GET'},)
-  //       .then(response => response.json())
-  //       .then(jsoned => {
-  //         const values = Array.from(jsoned.value)
-  //         console.log(values)
-  //         this.setState({joke: values[0].joke})
-  //         this.setState({jokes: values.slice(1)})
-  //       })
-  // }
-
   handleNumber (e) {
     this.setState({number: 1 + parseInt(e.target.value)})
   }
@@ -69,6 +58,14 @@ export default class Home extends Component {
     const fullName = e.target.value.split(' ')
     this.setState({firstName: fullName[0] || e.target.value})
     this.setState({lastName: fullName[1] || e.target.value})
+  }
+
+  handleOnParentControl (e) {
+    this.setState({parentControl: true})
+  }
+
+  handleOffParentControl (e) {
+    this.setState({parentControl: false})
   }
 
   render () {
@@ -86,7 +83,13 @@ export default class Home extends Component {
               text='Favorites'
               // onClick={this.getRandomName.bind(this)}
         />
-        {React.cloneElement(this.props.children, {jokes: this.state.jokes, handleName: this.handleName.bind(this), getRandom: this.getRandom.bind(this)})}
+        {React.cloneElement(this.props.children, {
+          jokes: this.state.jokes,
+          handleName: this.handleName.bind(this),
+          getRandom: this.getRandom.bind(this),
+          handleOnParentControl: this.handleOnParentControl.bind(this),
+          handleOffParentControl: this.handleOffParentControl.bind(this),
+        })}
       </section>
     );
   }

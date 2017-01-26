@@ -14,8 +14,8 @@ export default class Settings extends Component {
         <Button text='RESET'/>
         <br/>
         Parental Controls:
-        On: <input type="radio"/>
-        Off: <input type="radio" onClick={() => console.log('click')}/>
+        On: <input type="radio" onClick={this.props.handleOnParentControl}/>
+        Off: <input type="radio" onClick={this.props.handleOffParentControl}/>
       </section>
     )
   }
