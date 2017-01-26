@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { Link } from 'react-router'
+
 import '../../styles'
 
 import Header from '../../components/Header/Header';
@@ -72,11 +73,9 @@ export default class Home extends Component {
   renderSettings () {
     this.state.renderControls = !this.state.renderControls
   }
-// WON'T UPDATE FOR SOME REASON...
+
   reset() {
     this.state = this.defaultState
-    // this.setState({firstName: 'Chuck'})
-    // this.setState({lastName: 'Norris'})
     this.getRandom()
     this.setState({renderControls: false})
   }

@@ -7,7 +7,7 @@ export default class JokeGrid extends Component {
   renderNewJokes(array) {
     const jokeArray = array.map((jk, index) =>
     <p key={index} className='random'>{jk.joke}
-      <span>&#x2606;</span>
+      <span>&#9734;</span>
     </p>
     );
     return jokeArray

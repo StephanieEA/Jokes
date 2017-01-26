@@ -12,10 +12,18 @@ describe('<Header/>', () => {
     expect(wrapper.find('h1')).to.have.length(1);
   });
 
-  it('should trigger our logStuff function', () => {
-    const logStuff = sinon.spy()
-    const wrapper = mount(<Button handleClick={logStuff} />);
+  it('should trigger our renderSettings function', () => {
+    const renderSettings = sinon.spy()
+    const wrapper = mount(<Button onClick={renderSettings} />);
     wrapper.simulate('click');
-    expect(logStuff.calledOnce).to.equal(true);
+    expect(renderSettings.calledOnce).to.equal(true);
   });
+
+  it('should render the correct link', () => {
+    let wrapper = mount(<Header renderControls={true}/>).find('Link');
+    expect(wrapper.prop('to')).to.equal('/settings')
+    wrapper = mount(<Header renderControls={false}/>).find('Link');
+    console.log(wrapper.debug())
+    expect(wrapper.prop('to')).to.equal('/jokes')
+  })
 });
