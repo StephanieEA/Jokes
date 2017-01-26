@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { Link } from 'react-router'
-import '../../styles';
+import '../../styles'
 
 import Header from '../../components/Header/Header';
 import Button from '../../components/Button/Button';
 import RandomJoke from '../../components/RandomJoke/RandomJoke';
 import JokeNumber from '../../components/Input/JokeNumber';
 import JokeGrid from '../../components/JokeGrid/JokeGrid';
+import Controls from '../../components/Controls/Controls';
 //import apiRequest from '../../components/Helpers/apiRequest';
 
 export default class Home extends Component {
@@ -21,6 +22,7 @@ export default class Home extends Component {
       firstName: 'Chuck',
       lastName: 'Norris',
       parentControl: false,
+      renderControls: true,
     }
   }
 
@@ -68,21 +70,21 @@ export default class Home extends Component {
     this.setState({parentControl: false})
   }
 
+  renderControlsCheck () {
+    this.state.renderControls = !this.state.renderControls
+  }
+
   render () {
   return (
       <section>
-        <Header/>
+        <Header  renderControlsCheck={this.renderControlsCheck.bind(this)}/>
         <RandomJoke text={this.state.joke}/>
-        <Button className='new-jokes'
-              text={<Link to='/jokes'>New Jokes</Link>}
-              onClick={this.getRandom.bind(this)}/>
-        <JokeNumber
-          onChange={this.handleNumber.bind(this)}
-          value={this.state.number}/>
-        <Button className='favorites'
-              text='Favorites'
-              // onClick={this.getRandomName.bind(this)}
-        />
+        {/* controls should be a component in home that's replaced by settings */}
+        {this.state.renderControls ?
+          <Controls getRandom={this.getRandom.bind(this)}
+                    handleNumber={this.handleNumber.bind(this)}
+                    number={this.state.number}
+          /> : ''}
         {React.cloneElement(this.props.children, {
           jokes: this.state.jokes,
           handleName: this.handleName.bind(this),
