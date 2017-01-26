@@ -11,7 +11,9 @@ export default class Settings extends Component {
         <input className='set-name' type='text' onChange={this.props.handleName}></input>
         <Button text='SET'
                 onClick={this.props.getRandom}/>
-        <Button text='RESET'/>
+        <Button text='RESET'
+                onClick={this.props.reset}
+        />
         <br/>
         Parental Controls:
         On: <input type="radio" onClick={this.props.handleOnParentControl}/>

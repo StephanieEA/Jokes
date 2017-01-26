@@ -14,16 +14,15 @@ import Controls from '../../components/Controls/Controls';
 export default class Home extends Component {
   constructor() {
     super()
-    this.state = {
-    //  url: 'https://api.icndb.com/jokes/random/?escape=javascript',
-      number: 1,
-      joke: '',
-      jokes: [],
-      firstName: 'Chuck',
-      lastName: 'Norris',
-      parentControl: false,
-      renderControls: true,
-    }
+    this.defaultState = {
+          number: 1,
+          joke: '',
+          jokes: [],
+          firstName: 'Chuck',
+          lastName: 'Norris',
+          parentControl: false,
+          renderControls: true,}
+    this.state = this.defaultState;
   }
 
   componentDidMount() {
@@ -73,15 +72,14 @@ export default class Home extends Component {
   renderSettings () {
     this.state.renderControls = !this.state.renderControls
   }
-
-  // assignButtonLink () {
-  //   if (renderControls) {
-  //     let textValue = <Link to='/settings'>Settings</Link>
-  //   }
-  //   if (!renderControls) {
-  //     textValue = <Link to='/jokes'>Jokes</Link>
-  //   }
-  // }
+// WON'T UPDATE FOR SOME REASON...
+  reset() {
+    this.state = this.defaultState
+    // this.setState({firstName: 'Chuck'})
+    // this.setState({lastName: 'Norris'})
+    this.getRandom()
+    this.setState({renderControls: false})
+  }
 
   render () {
   return (
@@ -89,7 +87,6 @@ export default class Home extends Component {
         <Header  renderSettings={this.renderSettings.bind(this)}
                  renderControls={this.state.renderControls}/>
         <RandomJoke text={this.state.joke}/>
-        {/* controls should be a component in home that's replaced by settings */}
         {this.state.renderControls ?
           <Controls getRandom={this.getRandom.bind(this)}
                     handleNumber={this.handleNumber.bind(this)}
@@ -101,6 +98,7 @@ export default class Home extends Component {
           getRandom: this.getRandom.bind(this),
           handleOnParentControl: this.handleOnParentControl.bind(this),
           handleOffParentControl: this.handleOffParentControl.bind(this),
+          reset: this.reset.bind(this),
         })}
       </section>
     );
