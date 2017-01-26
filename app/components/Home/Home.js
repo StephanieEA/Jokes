@@ -18,6 +18,9 @@ export default class Home extends Component {
       number: 1,
       joke: '',
       jokes: [],
+      firstName: 'Chuck',
+      lastName: 'Norris',
+      parentControl: false,
     }
   }
 
@@ -26,19 +29,46 @@ export default class Home extends Component {
   }
 
   getRandom () {
-      fetch('https://api.icndb.com/jokes/random/' + this.state.number + '/?escape=javascript', {method: 'GET'},)
-        .then(response => response.json())
-        .then(jsoned => {
-          const values = Array.from(jsoned.value)
-          console.log(values)
-          this.setState({joke: values[0].joke})
-          this.setState({jokes: values.slice(1)})
+      if (!this.state.parentControl) {
+        fetch(`https://api.icndb.com/jokes/random/${this.state.number}/?firstName=${this.state.firstName}&lastName=${this.state.lastName}&escape=javascript`, {method: 'GET'},)
+          .then(response => response.json())
+          .then(jsoned => {
+            const values = Array.from(jsoned.value)
+            console.log(values)
+            this.setState({joke: values[0].joke})
+            this.setState({jokes: values.slice(1)})
         })
+      } else {
+        fetch(`https://api.icndb.com/jokes/random/${this.state.number}/?firstName=${this.state.firstName}&lastName=${this.state.lastName}&escape=javascript&exclude=[explicit]`, {method: 'GET'},)
+          .then(response => response.json())
+          .then(jsoned => {
+            const values = Array.from(jsoned.value)
+            console.log(values)
+            this.setState({joke: values[0].joke})
+            this.setState({jokes: values.slice(1)})
+          })
+      }
   }
 
+  // getRandomName () {
+  //     fetch(`https://api.icndb.com/jokes/random/${this.state.number}/?firstName=${this.state.firstName}&lastName=${this.state.lastName}&escape=javascript`, {method: 'GET'},)
+  //       .then(response => response.json())
+  //       .then(jsoned => {
+  //         const values = Array.from(jsoned.value)
+  //         console.log(values)
+  //         this.setState({joke: values[0].joke})
+  //         this.setState({jokes: values.slice(1)})
+  //       })
+  // }
 
   handleNumber (e) {
     this.setState({number: 1 + parseInt(e.target.value)})
+  }
+
+  handleName (e) {
+    const fullName = e.target.value.split(' ')
+    this.setState({firstName: fullName[0] || e.target.value})
+    this.setState({lastName: fullName[1] || e.target.value})
   }
 
   render () {
@@ -54,9 +84,9 @@ export default class Home extends Component {
           value={this.state.number}/>
         <Button className='favorites'
               text='Favorites'
-          //    onClick={()=> console.log('click favorites')}
+              // onClick={this.getRandomName.bind(this)}
         />
-        {React.cloneElement(this.props.children, {jokes: this.state.jokes})}
+        {React.cloneElement(this.props.children, {jokes: this.state.jokes, handleName: this.handleName.bind(this), getRandom: this.getRandom.bind(this)})}
       </section>
     );
   }
