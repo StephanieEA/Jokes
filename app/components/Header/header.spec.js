@@ -19,11 +19,10 @@ describe('<Header/>', () => {
     expect(renderSettings.calledOnce).to.equal(true);
   });
 
-  it('should render the correct link', () => {
+  it('should render the correct link based on the renderControl value', () => {
     let wrapper = mount(<Header renderControls={true}/>).find('Link');
     expect(wrapper.prop('to')).to.equal('/settings')
     wrapper = mount(<Header renderControls={false}/>).find('Link');
-    console.log(wrapper.debug())
     expect(wrapper.prop('to')).to.equal('/jokes')
   })
 });
