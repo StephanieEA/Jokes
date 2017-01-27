@@ -10,11 +10,10 @@ export default class JokeGrid extends Component {
 
     jokes = jokes.map((jk, index) =>
        (<p key={index}
-          id={jk.id}
           className='random'>
           {jk.joke}
          <Button onClick={() => this.props.makeFavorite(jk.id)}
-         className='favorite-btn' text='&#9734;' />
+         className='favorite-btn' id={jk.id} text='&#9734;' />
        </p>)
       )
 

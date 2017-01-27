@@ -5,24 +5,25 @@ import './header-style';
 
 import Button from '../Button/Button';
 
-const Header = ({renderSettings, renderControls}) => {
+export default class Header extends React.Component {
 
-  return (
+  render() {
+    return (
       <h1 className='Header'>CHUCK NORRIS JOKE MACHINE
-        {/* Can I make the text property conditional instead of the button as a whole */}
-      {renderControls ?
+        {/* Can I make the text and targetPath property conditional instead of the button as a whole */}
+      {this.props.renderControls ?
         <Button className='settings'
                 text='Settings'
-                onClick={renderSettings}
+                onClick={this.props.renderSettings}
                 targetPath='/settings'
         /> : <Button className='settings'
                         text='Jokes'
-                        onClick={renderSettings}
+                        onClick={this.props.renderSettings}
                         targetPath='/jokes'
         />
             }
       </h1>
-  );
-}
+    )
+  }
 
-export default Header;
+}

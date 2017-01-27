@@ -10,7 +10,8 @@ export default class Settings extends Component {
         Set Name:
         <input className='set-name' type='text' onChange={this.props.handleName}></input>
         <Button text='SET'
-                onClick={this.props.getRandom}/>
+                onClick={() => {
+                  this.props.getRandom(this.props.parentControl, this.props.number, this.props.firstName, this.props.lastName, this.props.setState)}}/>
         <Button text='RESET'
                 onClick={this.props.reset}
         />

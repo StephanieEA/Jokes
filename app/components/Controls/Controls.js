@@ -12,7 +12,7 @@ export default class Controls extends Component {
         <Button className='new-jokes'
               targetPath='/jokes'
               text="New Jokes"
-              onClick={this.props.getRandom}/>
+              onClick={() => {this.props.getRandom(this.props.parentControl, this.props.number, this.props.firstName, this.props.lastName, this.props.setState)}}/>
         <JokeNumber
           onChange={this.props.handleNumber}
           value={this.props.number}/>
@@ -20,6 +20,7 @@ export default class Controls extends Component {
               className='favorites'
               text="Favorites"
               targetPath='/favorites'
+              onClick={()=>{this.props.renderSettings()}}
         />
       </div>
     )
