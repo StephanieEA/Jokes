@@ -14,19 +14,25 @@ describe('Button', () => {
 
   it('has className and aria-label properties', () => {
     const fakeName = 'fakeName'
-    const fakeLabel = 'fakeLabel'
-    const wrapper = shallow(<Button className={fakeName} aria-label={fakeLabel}/>)
+    const wrapper = mount(<Button className={fakeName} />)
     const buttonWrapper = wrapper.find('button')
     expect(buttonWrapper.props().className).to.equal('fakeName')
-  //  expect(buttonWrapper.prop(aria-label)).to.equal('fakeLabel')
   })
 
-  it('renders text correctly', () => {
-    const fakeText = 'Settings'
-    const wrapper = shallow(<Button text={fakeText}/>)
+  it('renders a child link', () => {
+    const wrapper = shallow(<Button />)
     const buttonText = wrapper.find('button').text()
-    expect(buttonText).to.equal('Settings')
+    expect(buttonText).to.equal('<Link />')
   });
+
+  it('renders text property correctly in link', () => {
+    const fakeName = 'fakeName'
+    const fakeLabel = 'fakeLabel'
+    const fakeText = 'fakeText'
+    const wrapper = mount(<Button className={fakeName} aria-label={fakeLabel} text={fakeText}/>)
+    const LinkWrapper = wrapper.find('Link').text()
+    expect(LinkWrapper).to.equal('fakeText')
+  })
 
   it('the onClick property triggers the function from its parent', () => {
     const pFunction = sinon.spy()
@@ -35,5 +41,5 @@ describe('Button', () => {
     wrapper.simulate('click')
     assert.equal(pFunction.calledOnce, true)
   })
-  
+
 });

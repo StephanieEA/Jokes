@@ -26,15 +26,14 @@ export default class App extends Component {
 
   componentDidMount() {
     getRandom(this.state.parentControl, this.state.number, this.state.firstName, this.state.lastName, this.setStateAfterCall.bind(this))
-
   }
 
   setStateAfterCall (joke, jokes) {
   this.setState({ joke, jokes })
   }
 
-
   handleNumber (e) {
+    e.prevent.default()
     this.setState({number: 1 + parseInt(e.target.value)})
   }
 
@@ -43,8 +42,6 @@ export default class App extends Component {
     this.setState({firstName: fullName[0] || e.target.value})
     this.setState({lastName: fullName[1] || ''})
   }
-
-
 
   toggleParentControl() {
     this.setState({parentControl: !this.state.parentControl})
@@ -72,8 +69,6 @@ export default class App extends Component {
       jokes: this.state.jokes,
       handleName: this.handleName.bind(this),
       getRandom: getRandom.bind(this),
-      // handleOnParentControl: this.handleOnParentControl.bind(this),
-      // handleOffParentControl: this.handleOffParentControl.bind(this),
       toggleParentControl: this.toggleParentControl.bind(this),
       reset: this.reset.bind(this),
       makeFavorite: this.makeFavorite.bind(this),
@@ -106,7 +101,7 @@ export default class App extends Component {
                     makeFavorite= {this.makeFavorite.bind(this)}
 
           /> : ''}
-          {roar}
+           {roar}
       </section>
     );
   }

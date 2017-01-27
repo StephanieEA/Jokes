@@ -5,7 +5,7 @@ import sinon from 'sinon'
 
 import Controls from './Controls';
 import Button from '../Button/Button';
-import JokeNumber from '../Input/JokeNumber';
+import Input from '../Input/Input';
 
 describe('<Controls/>', () => {
   it('should render two child button components', () => {
@@ -25,9 +25,14 @@ describe('<Controls/>', () => {
     expect(onClick.calledOnce).to.equal(true);
   });
 
-  it('should render a link to /jokes', () => {
-    const wrapper = mount(<Controls />).find('Link');
+  it('should render the first link with a path to /jokes', () => {
+    const wrapper = mount(<Controls />).find('Link').first();
     expect(wrapper.prop('to')).to.equal('/jokes')
+  })
+
+  it('should render the second link with a path to /favorites', () => {
+    const wrapper = mount(<Controls />).find('Link').at(1);
+    expect(wrapper.prop('to')).to.equal('/favorites')
   })
 
   it('should use parents on change method to update input', () => {

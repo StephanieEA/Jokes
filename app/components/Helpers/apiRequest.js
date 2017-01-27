@@ -10,6 +10,7 @@ const getRandom = (parentControl, number, firstName, lastName, setState) => {
           Object.assign(value, {favorite: false})
         })
         setState(values[0].joke, values.slice(1))
+        console.log(values)
       })
   } else {
     fetch(`https://api.icndb.com/jokes/random/${number}/?firstName=${firstName}&lastName=${lastName}&escape=javascript&exclude=[explicit]`, {method: 'GET'},)
