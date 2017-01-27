@@ -33,11 +33,12 @@ export default class App extends Component {
   }
 
   handleNumber (e) {
-    if(e.target.value === NaN) {
-      this.setState({number: 2})
+    if(e.target.value === NaN || e.target.value === 0) {
+      this.setState({number: 1})
     }
     this.setState({number: 1 + parseInt(e.target.value)})
-  }
+    }
+
 
   handleName (e) {
     const fullName = e.target.value.split(' ')
