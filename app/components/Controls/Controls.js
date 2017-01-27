@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 
 import Button from '../../components/Button/Button'
-import JokeNumber from '../../components/Input/JokeNumber'
+import Input from '../../components/Input/Input'
 
 
 export default class Controls extends Component {
@@ -14,7 +14,7 @@ export default class Controls extends Component {
                 text="New Jokes"
                 onClick={() => {
                 this.props.getRandom(this.props.parentControl, this.props.number, this.props.firstName, this.props.lastName, this.props.setState)}}/>
-        <JokeNumber
+        <Input
           onChange={this.props.handleNumber}
           value={this.props.number}/>
         <Button

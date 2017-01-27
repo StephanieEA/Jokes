@@ -44,12 +44,9 @@ export default class App extends Component {
     this.setState({lastName: fullName[1] || ''})
   }
 
-  handleOnParentControl (e) {
-    this.setState({parentControl: true})
-  }
-
-  handleOffParentControl (e) {
-    this.setState({parentControl: false})
+  toggleParentControl() {
+    this.setState({parentControl: !this.state.parentControl})
+    getRandom(this.state.parentControl, this.state.number, this.state.firstName, this.state.lastName, this.setStateAfterCall.bind(this))
   }
 
   renderSettings () {
@@ -73,8 +70,9 @@ export default class App extends Component {
       jokes: this.state.jokes,
       handleName: this.handleName.bind(this),
       getRandom: getRandom.bind(this),
-      handleOnParentControl: this.handleOnParentControl.bind(this),
-      handleOffParentControl: this.handleOffParentControl.bind(this),
+      // handleOnParentControl: this.handleOnParentControl.bind(this),
+      // handleOffParentControl: this.handleOffParentControl.bind(this),
+      toggleParentControl: this.toggleParentControl.bind(this),
       reset: this.reset.bind(this),
       makeFavorite: this.makeFavorite.bind(this),
       number: this.state.number,
