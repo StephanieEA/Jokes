@@ -33,7 +33,9 @@ export default class App extends Component {
   }
 
   handleNumber (e) {
-    e.prevent.default()
+    if(e.target.value === NaN) {
+      this.setState({number: 2})
+    }
     this.setState({number: 1 + parseInt(e.target.value)})
   }
 
@@ -106,3 +108,8 @@ export default class App extends Component {
     );
   }
 }
+
+//
+// App.propTypes = {
+//   children: React.PropTypes.object,
+// }
