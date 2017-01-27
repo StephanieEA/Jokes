@@ -2,11 +2,6 @@ import React from 'react';
 
 import './random-joke-style'
 
-const RandomJoke = ({text}) => {
+const RandomJoke = ({text}) => (<p>{text}</p>)
 
-  return (
-    <p>{text}</p>
-  )
-}
-
- export default RandomJoke;
+export default RandomJoke;
