@@ -1,20 +1,23 @@
 import React, { Component } from 'react'
 
+import  Button from '../../components/Button/Button'
 import './joke-grid-style';
 
 export default class JokeGrid extends Component {
-
-  renderNewJokes(array) {
-    const jokeArray = array.map((jk, index) =>
-    <p key={index} className='random'>{jk.joke}
-      <span>&#9734;</span>
-    </p>
-    );
-    return jokeArray
-  }
-
+// should probably make a separate commponent that does the rendering, taking an array argument, that is used here and in favorites
   render () {
-    const jokes = this.renderNewJokes(this.props.jokes)
+    let jokes = this.props.jokes
+
+    jokes = jokes.map((jk, index) =>
+       (<p key={index}
+          id={jk.id}
+          className='random'>
+          {jk.joke}
+         <Button onClick={() => this.props.makeFavorite(jk.id)}
+         className='favorite-btn' text='&#9734;' />
+       </p>)
+      )
+
     return (
       <section>
         {jokes}

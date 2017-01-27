@@ -6,17 +6,18 @@ import Home from './components/Home/Home'
 import JokeGrid from './components/JokeGrid/JokeGrid'
 import Settings from './components/Settings/Settings'
 import Favorites from './components/Favorites/favorites'
+import App from './components/App/App'
 
 render((
   <Router history={browserHistory}>
-    <Route path='/' component={Home}>
-    {/* <IndexRoute component={Home}/> */}
+    <Route path='/' component={App}>
+    <IndexRoute component={Home}/>
       <Route path='/settings' component={Settings}/>
-      <IndexRoute component={Settings}/>
+      {/* <IndexRoute component={Settings}/> */}
       <Route path='/jokes' component={JokeGrid} />
-      <IndexRoute component={JokeGrid}/>
+      {/* <IndexRoute component={JokeGrid}/> */}
       <Route path='/favorites' component={Favorites}/>
-      <IndexRoute component={Favorites}/>
+      {/* <IndexRoute component={Favorites}/> */}
     </Route>
   </Router>
 ), document.querySelector('.application'));

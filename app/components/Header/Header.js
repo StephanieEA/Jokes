@@ -12,11 +12,13 @@ const Header = ({renderSettings, renderControls}) => {
         {/* Can I make the text property conditional instead of the button as a whole */}
       {renderControls ?
         <Button className='settings'
-                text={<Link to='/settings'>Settings</Link>}
+                text='Settings'
                 onClick={renderSettings}
+                targetPath='/settings'
         /> : <Button className='settings'
-                        text={<Link to='/jokes'>Jokes</Link>}
+                        text='Jokes'
                         onClick={renderSettings}
+                        targetPath='/jokes'
         />
             }
       </h1>

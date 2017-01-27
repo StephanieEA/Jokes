@@ -10,7 +10,8 @@ export default class Controls extends Component {
     return (
       <div>
         <Button className='new-jokes'
-              text={<Link to='/jokes'>New Jokes</Link>}
+              targetPath='/jokes'
+              text="New Jokes"
               onClick={this.props.getRandom}/>
         <JokeNumber
           onChange={this.props.handleNumber}
@@ -18,8 +19,9 @@ export default class Controls extends Component {
         <Button
           // will need to alter onClick trigger- right now its just duplicating joke setup
               className='favorites'
-              text={<Link to='/favorites'>Favorites</Link>}
+              text="Favorites"
               onClick={this.props.getRandom}
+              targetPath='/favorites'
         />
       </div>
     )
