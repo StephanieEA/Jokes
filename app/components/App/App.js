@@ -44,6 +44,8 @@ export default class App extends Component {
     this.setState({lastName: fullName[1] || ''})
   }
 
+
+
   toggleParentControl() {
     this.setState({parentControl: !this.state.parentControl})
     getRandom(this.state.parentControl, this.state.number, this.state.firstName, this.state.lastName, this.setStateAfterCall.bind(this))

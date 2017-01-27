@@ -13,7 +13,7 @@ export default class JokeGrid extends Component {
           {jk.joke}
           <Button onClick={() => this.props.makeFavorite(jk.id)}
                   className='favorite-btn'
-                  text='&#9734;' />
+                  text='&#9733;' />
       </p>)
     )
 

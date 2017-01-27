@@ -6,7 +6,7 @@ import Input from '../../components/Input/Input'
 export default class Settings extends Component {
   render() {
     return (
-      <section>
+      <section className='settings-rte'>
         Set Name:
         <Input className='set-name' type='text' onChange={this.props.handleName}/>
         <Button text='SET'
@@ -15,7 +15,7 @@ export default class Settings extends Component {
         <Button text='RESET'
                 onClick={this.props.reset}/>
         <br/>
-          Parental Controls: On:
+          Parental Controls:  On:
           <Input type="radio"
                  onChange={this.props.toggleParentControl}
                  value={true}

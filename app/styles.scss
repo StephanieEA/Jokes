@@ -1,13 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee+Shade|Karla');
 
-$background-color: teal;
+$background-color: rgb(29,53,63);
+$darkBackground: rgba(0,0,0,0.2);
 $text-color: white;
 $header-font: 'Bungee Shade', sans-serif;
 $small-font: 8px;
+$transparent: rgba(0,0,0,0);
 
 body {
-  background: rgb(29, 53, 63);
+  background: $background-color;
   color: $text-color;
   font-family: 'Karla', sans-serif;
   text-align: center;
+}
+
+.settings-rte {
+  background: $darkBackground;
+  margin: 10px;
+  padding: 15px;
 }

@@ -1,7 +1,7 @@
-//@import '../../styles';
+@import '../../styles';
 
 .random {
-  background: rgba(0,0,0,0.2);
+  background: $darkBackground;
   border: none;
   color: white;
   display: inline-block;
@@ -9,6 +9,14 @@
   width: 30%;
 }
 
-span {
+.favorite-btn {
+  &:hover {
+    background: $transparent
+  }
+  background: $transparent;
+  color: white;
   float: right;
+  font-size: 15px;
+  padding: 0;
+  margin: 0;
 }
