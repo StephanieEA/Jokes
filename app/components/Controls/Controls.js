@@ -16,7 +16,7 @@ export default class Controls extends Component {
                 this.props.getRandom(this.props.parentControl, this.props.number, this.props.firstName, this.props.lastName, this.props.setState)}}/>
         <Input
           onChange={this.props.handleNumber}
-          value={this.props.number}/>
+          value={this.props.number - 1}/>
         <Button
               className='favorites'
               text="Favorites"
