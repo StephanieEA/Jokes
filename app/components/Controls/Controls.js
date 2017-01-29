@@ -18,6 +18,7 @@ export default class Controls extends Component {
           onChange={this.props.handleNumber}
           value={this.props.number - 1}
           placeholder='5'
+          type='number'
           className='joke'/>
         <Button
               className='favorites'

@@ -11,7 +11,7 @@ export default class JokeGrid extends Component {
       (<p key={index}
           className='random'>
           {jk.joke}
-          <Button onClick={() => this.props.makeFavorite(jk.id)}
+          <Button onClick={(e) => this.props.makeFavorite(jk.id, e)}
                   className='favorite-btn'
                   text='&#9733;' />
       </p>)

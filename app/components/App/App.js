@@ -34,10 +34,11 @@ export default class App extends Component {
 
   handleNumber (e) {
     if(e.target.value === NaN || e.target.value === 0) {
-      this.setState({number: 1})
+      return this.setState({number: 1})
     }
+    console.log('hey')
     this.setState({number: 1 + parseInt(e.target.value)})
-    }
+  }
 
 
   handleName (e) {
@@ -55,9 +56,11 @@ export default class App extends Component {
     this.state.renderControls = !this.state.renderControls
   }
 
-  makeFavorite(id) {
+  makeFavorite(id, e) {
     const fave = this.state.jokes.find(joke => joke.id === id)
     fave.favorite = true
+    e.target.classList.toggle('favorited');
+
   }
 
   reset() {
